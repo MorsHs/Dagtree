@@ -1,47 +1,7 @@
-import dagre from "@dagrejs/dagre";
-
-const nodeWidth = 172;
-const nodeHeight = 36;
-
-export function getLayoutedElements(nodes, edges = []) {
-  const dagreGraph = new dagre.graphlib.Graph();
-
-  dagreGraph.setDefaultEdgeLabel(() => ({}));
-
-  dagreGraph.setGraph({
-    rankdir: "TB",
-    ranker: "network-simplex",
-  });
-
-  nodes.forEach((node) => {
-    dagreGraph.setNode(node.id, {
-      width: nodeWidth,
-      height: nodeHeight,
-    });
-  });
-
-  edges.forEach((edge) => {
-    dagreGraph.setEdge(edge.source, edge.target);
-  });
-
-  dagre.layout(dagreGraph);
-
-  const layoutedNodes = nodes.map((node) => {
-    const nodeWithPosition = dagreGraph.node(node.id);
-
-    return {
-      ...node,
-      targetPosition: "top",
-      sourcePosition: "bottom",
-      position: {
-        x: nodeWithPosition.x - nodeWidth / 2,
-        y: nodeWithPosition.y - nodeHeight / 2,
-      },
-    };
-  });
-
+﻿export function getLayoutedElements(nodes, edges = []) {
+  // Dagre removed — return nodes/edges unchanged so React Flow uses provided positions.
   return {
-    nodes: layoutedNodes,
+    nodes,
     edges,
   };
 }

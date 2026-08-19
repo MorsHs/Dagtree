@@ -13,15 +13,12 @@ import "@xyflow/react/dist/style.css";
 import NodeContextMenu from "./components/ContextMenu/ContextMenu";
 import PreviewNode from "./components/CustomNodes/PreviewNode";
 import { nodeTypes } from "./constant/nodeTypes";
-import { getLayoutedElements } from "./layout/dagreLayout";
 import initialNodes from "./data/initialElements";
 import { usePreviewNodeClick } from "./components/PreviewController";
 import { useFamilyTree } from "./hooks/useFamilyTree";
 
-const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
-  initialNodes,
-  [],
-);
+const layoutedNodes = initialNodes;
+const layoutedEdges = [];
 //////////////////////////////
 
 export default function App() {
