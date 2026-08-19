@@ -1,1 +1,1 @@
-Family tree powered by DAG and ReactFlow
+Family tree powered ReactFlow
